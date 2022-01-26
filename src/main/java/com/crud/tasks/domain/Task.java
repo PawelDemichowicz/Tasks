@@ -1,8 +1,8 @@
 package com.crud.tasks.domain;
 
-import lombok.Data;
+import javax.persistence.*;
 
-@Data
+@Entity(name = "tasks")
 public class Task {
     private Long id;
     private String title;
@@ -14,15 +14,34 @@ public class Task {
         this.content = content;
     }
 
+    public Task() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
 
+    @Column(name = "name")
     public String getTitle() {
         return title;
     }
 
+    @Column(name = "description")
     public String getContent() {
         return content;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
